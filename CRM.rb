@@ -5,6 +5,7 @@ class CRM
 
 	def initialize(name)
 		@name = name
+	end
 
 	def print_main_menu
 		puts "[1] Add a contact"
@@ -16,27 +17,39 @@ class CRM
 		puts "[7] Exit"
 		puts "Choose an option by entering a number:"
 	end
+
+    def call_option(user_input)
+	   add_contact if user_input == 1
+	   modify_contact if user_input == 2
+	   delete_contact if user_input == 3
+	   one_contact if user_input == 4
+	   contact_attr if user_input == 5
+	   delete_contact if user_input == 6
+    end
+
+
+    def main_menu
+	  print_main_menu
+	  input = gets.chomp.to_i
+	  call_option(input)
+	end	
 end
 
-def main_menu
-	print_main_menu
-	input = gets.chomp.to_i
-	call_option(input)
-end
-
-def call_option(input)
-	when input == 1
-		puts "Add a contact"
-	when input == 2
-		puts "Modify a contact"
-	when input == 3
-		puts "Display all contacts"
-	when input == 4
-		puts "Display one contact"
-	when input == 5 
-		puts "Display a contacts attribute"
-	when inout == 6
-		puts "Delete a contact"
-	when input == 7
-		puts "Exit"
+class Contact
+	def initilize (id, first_name, last_name, email, notes)
+		@id = id
+		@first_name = first_name
+		@last_name = last_name
+		@email = email
+		@notes = notes
 	end
+
+	def add_contact
+	  print "Enter your First Name"
+	  first_name = gets.chomp
+	  print "Enter your Last name"
+	  last_name = gets.chomp
+	  print "Enter Email Address"
+	  email = gets.chomp
+	end
+end
