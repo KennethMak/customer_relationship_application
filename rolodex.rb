@@ -22,7 +22,17 @@ class Rolodex
      end
    end
 
-   # def display_one_contact(one_contact)
-   #  puts "#{contact}"
-   # end
+   def dis_all_contacts
+    @contacts.each do |contact|
+      puts "Found Contacts: ", contact.first_name, contact.last_name
+    end
+   end
+
+   def delete_contacts(delete_contacts)
+    @contacts.each do |contact|
+      contact.delete
+    end
+   end
+
+
 end

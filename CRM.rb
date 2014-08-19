@@ -1,12 +1,13 @@
 require_relative('rolodex')
-require_relative('contacts')
+require_relative('contact')
 
 class CRM
-	# def self.run(name)
-	# 	crm = CRM.new(name)
-	# 	crm.main_menu
-	# end
-#As a user, prompt "add, modify, display all, display one, display attr, delete, exit"	
+
+	def self.run(name)
+		crm = CRM.new(name)
+		crm.main_menu
+	end
+
 	attr_accessor :name
 
 	def initialize(name)
@@ -55,10 +56,14 @@ class CRM
 	  main_menu
 	end
 
-	def modify_contact
-		print "Enter the first name you would like to edit: "
+	def retrieve_contact_first_name
 		first_name = gets.chomp
 		found_contact = @rolodex.find_contact(first_name)
+	end
+
+	def modify_contact
+		print "Enter the first name of the contact you would like to edit: "
+		found_contact = retrieve_contact_first_name
 		puts "[1] Edit First name", "[2] Edit Last Name", "[3] Edit Email", "[4] Edit Note"
 		contact_changer = gets.chomp.to_i
 		case contact_changer
@@ -79,20 +84,36 @@ class CRM
 			new_note = gets.chomp
 			found_contact.note = new_note
 		end
-		puts found_contact.inspect #.inspect makes it readable, not random id code
+		# puts found_contact.inspect #.inspect makes it readable, not random id code
 		main_menu
 	end
 
 	def dis_one_contact
 		print "Enter first name of contact you want to display: "
-		first_name = gets.chomp
-		found_contact = @rolodex.find_contact(first_name)
-		puts "The following is the contact information for #{first_name}: "
-		puts found_contact.first_name, found_contact.last_name, found_contact.email, found_contact.note, found_contact.id
+		found_contact = retrieve_contact_first_name
+		if found_contact
+			puts "The contact '#{found_contact.first_name}' has been found:"
+			puts found_contact#.to_s
+		else
+			puts "Contact not found!"
+		end
 	end
 
-	def dis_all_contacts
-		
+	def dis_all_contact
+		@rolodex.dis_all_contacts
+	end
+
+	def contact_attr
+		print "Enter first name of contact you want to display: "
+		found_contact = retrieve_contact_first_name
+		puts "The following is all the contact information for #{first_name}: ", found_contact.first_name, found_contact.last_name, found_contact.email, found_contact.note, found_contact.id
+	end
+
+	def delete_contact
+		print "Enter the first name of the contact you want to delete: "
+		found_contact = retrieve_contact_first_name
+		found_contact.delete(last_name)
+			puts "The contact '#{found_contact.first_name}' has been deleted"
 	end
 end
 

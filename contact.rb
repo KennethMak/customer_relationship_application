@@ -7,4 +7,9 @@ class Contact
     @email = email
     @note = note
   end
+
+  def to_s
+  	"First: #{@first_name} Last: #{last_name}"
+  end
+
 end
