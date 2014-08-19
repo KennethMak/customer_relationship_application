@@ -22,8 +22,7 @@ class Rolodex
      end
    end
 
-   def display_all_contacts
-      @contacts
-      end
-   end
+   # def display_one_contact(one_contact)
+   #  puts "#{contact}"
+   # end
 end

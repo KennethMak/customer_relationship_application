@@ -18,8 +18,8 @@ class CRM
 	def print_main_menu
 		puts "[1] Add a contact"
 		puts "[2] Modify a contact"
-		puts "[3] Display all contacts"
-		puts "[4] Display one contact"
+		puts "[3] Display one contact"
+		puts "[4] Display all contacts"
 		puts "[5] Display a contacts attribute"
 		puts "[6] Delete a contact"
 		puts "[7] Exit"
@@ -29,8 +29,8 @@ class CRM
     def call_option(user_input)
 	   add_contact if user_input == 1
 	   modify_contact if user_input == 2
-	   display_contact if user_input == 3
-	   one_contact if user_input == 4
+	   dis_one_contact if user_input == 3
+	   dis_all_contact if user_input == 4
 	   contact_attr if user_input == 5
 	   delete_contact if user_input == 6
     end
@@ -83,16 +83,16 @@ class CRM
 		main_menu
 	end
 
-	def display_all
-		@rolodex.display_all_contacts.each do
-			puts contact.to_s
-		end
+	def dis_one_contact
+		print "Enter first name of contact you want to display: "
+		first_name = gets.chomp
+		found_contact = @rolodex.find_contact(first_name)
+		puts "The following is the contact information for #{first_name}: "
+		puts found_contact.first_name, found_contact.last_name, found_contact.email, found_contact.note, found_contact.id
 	end
 
-	def display_one_contact
-		puts "Enter first name of contact you want to edit"
-		one_contact = gets.chomp
-		@rolodex.display_one_contact
+	def dis_all_contacts
+		
 	end
 end
 
