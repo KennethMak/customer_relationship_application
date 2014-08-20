@@ -24,14 +24,16 @@ class Rolodex
 
    def dis_all_contacts
     @contacts.each do |contact|
-      puts "Found Contacts: ", contact.first_name, contact.last_name
+      puts "Contact: ", contact.first_name, contact.last_name
     end
    end
 
-   def delete_contacts(delete_contacts)
-    @contacts.each do |contact|
-      contact.delete
-    end
+   def delete(contacts)
+      @contacts.each do |contact|
+        if contact.first_name == contacts
+          contacts.delete
+        end
+      end
    end
 
 

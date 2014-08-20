@@ -9,7 +9,7 @@ class Contact
   end
 
   def to_s
-  	"First: #{@first_name} Last: #{last_name}"
+  	"First: #{@first_name} Last: #{last_name} Email: #{email} Note: #{note}"
   end
 
 end

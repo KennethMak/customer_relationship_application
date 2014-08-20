@@ -112,8 +112,10 @@ class CRM
 	def delete_contact
 		print "Enter the first name of the contact you want to delete: "
 		found_contact = retrieve_contact_first_name
-		found_contact.delete(last_name)
-			puts "The contact '#{found_contact.first_name}' has been deleted"
+		if found_contact
+			@rolodex.delete(found_contact)
+				puts "The contact '#{found_contact.first_name}' has been deleted"
+		end
 	end
 end
 
